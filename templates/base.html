@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Valentine's Day{% endblock %}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body class="pastel-blue-bg">
+    <!-- Main Content -->
+    <div class="relative z-10">{% block content %}{% endblock %}</div>
+
+    <!-- Floating Hearts Container -->
+    <div id="floating-hearts-root"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="{{ url_for('static', filename='js/FloatingHearts.js') }}"></script>
+    {% block extra_scripts %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Valentine's Day - Will{% endblock %}
+{% block content %}
+<div class="page-container">
+  <div class="content-wrapper">
+    <div class="image-container">
+      <img
+        src="{{ url_for('static', filename='images/photo_1.jpg') }}"
+        alt="Photo 1"
+        class="page-image"
+      />
+    </div>
+    <h1>Will</h1>
+    <a class="next-button" href="{{ url_for('you') }}">Next</a>
+  </div>
+</div>
+{% endblock %}

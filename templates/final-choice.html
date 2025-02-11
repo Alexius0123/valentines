@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %}Will You Be My Valentine?{% endblock
+%} {% block content %}
+<div class="page-container">
+  <div class="content-wrapper">
+    <h1>Will You Be My Valentine's Karine Pangestu?</h1>
+    <div class="choice-buttons">
+      <a href="{{ url_for('success') }}" class="choice-button yes-button"
+        >Yes</a
+      >
+      <button class="choice-button no-button" id="noButton">No</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const noButton = document.getElementById("noButton");
+    let isClicked = false;
+
+    noButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (!isClicked) {
+        noButton.textContent = "Too bad";
+        noButton.style.background = "linear-gradient(45deg, #808080, #666666)";
+        noButton.style.cursor = "not-allowed";
+        noButton.style.opacity = "0.7";
+        isClicked = true;
+      }
+    });
+
+    // Make the No button move away from cursor on hover with slower movement
+    noButton.addEventListener("mouseover", function () {
+      if (!isClicked) {
+        // Only move if button hasn't been clicked
+        const x = Math.random() * (window.innerWidth - this.offsetWidth);
+        const y = Math.random() * (window.innerHeight - this.offsetHeight);
+
+        // Keep button within viewport bounds
+        const maxX = window.innerWidth - this.offsetWidth;
+        const maxY = window.innerHeight - this.offsetHeight;
+        const finalX = Math.min(Math.max(0, x), maxX);
+        const finalY = Math.min(Math.max(0, y), maxY);
+
+        this.style.position = "fixed";
+        this.style.transition = "all 0.8s ease"; // Slowed down movement
+        this.style.left = finalX + "px";
+        this.style.top = finalY + "px";
+      }
+    });
+  });
+</script>
+{% endblock %}

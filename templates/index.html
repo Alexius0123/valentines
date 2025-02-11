@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Valentine's Day - Envelope{% endblock
+%} {% block content %}
+<div class="envelope">
+  <div class="flap" id="flap">
+    <div class="envelope-seal">From Bubs</div>
+  </div>
+</div>
+
+{% block extra_scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const flap = document.getElementById("flap");
+    flap.addEventListener("click", () => {
+      flap.classList.add("open");
+      setTimeout(() => {
+        window.location.href = "{{ url_for('letter') }}";
+      }, 1200);
+    });
+  });
+</script>
+{% endblock %} {% endblock %}
